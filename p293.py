@@ -10,11 +10,20 @@ def is_admissible(x: int) -> bool:
     return True
 
 
-def main():
+def f():
     pseudo_fortunate_numbers = set()
     for i in trange(2, 10**9):
         if is_admissible(i):
             pseudo_fortunate_numbers.add(nextprime(i + 1) - i)  # type: ignore
+
+
+def count_admissible(x: int):
+    column = 0
+
+
+
+def main():
+    return
 
 
 if __name__ == "__main__":
