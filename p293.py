@@ -17,9 +17,8 @@ def f():
             pseudo_fortunate_numbers.add(nextprime(i + 1) - i)  # type: ignore
 
 
-def count_admissible(x: int):
+def count_admissible():
     column = 0
-
 
 
 def main():
