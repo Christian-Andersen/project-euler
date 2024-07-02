@@ -1,12 +1,7 @@
 # Sum of a Square and a Cube
-import numpy as np
 from tqdm import tqdm
 
-N = 100_000_000
-
-r = np.arange(10000000)
-SQUARES = r**2
-CUBES = r**3
+N = 10**9
 
 
 def get_palindromes() -> dict[int, int]:
@@ -28,15 +23,19 @@ def get_palindromes() -> dict[int, int]:
 def main():
     palindromes = get_palindromes()
     print("Got Palindromes")
-    for i in tqdm(SQUARES):
-        for j in CUBES:
+    squares = [i**2 for i in range(int(N ** (1 / 2)))]
+    cubes = [i**3 for i in range(int(N ** (1 / 3)))]
+    i = 0
+    for i in tqdm(squares):
+        for j in cubes:
             x = i + j
             if x >= N:
                 break
             if x in palindromes:
                 palindromes[x] += 1
+        i += 1
     if l := [key for key, value in palindromes.items() if value == 4]:
-        print(l)
+        print(sum(l))
 
 
 if __name__ == "__main__":
