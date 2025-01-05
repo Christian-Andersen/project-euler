@@ -6,7 +6,7 @@ from numba import njit
 def is_prime(x: int) -> bool:
     if x <= 1:
         return False
-    for i in range(2, int(x**.5)+1):
+    for i in range(2, int(x**0.5) + 1):
         if (x % i) == 0:
             return False
     return True
@@ -14,7 +14,7 @@ def is_prime(x: int) -> bool:
 
 @njit
 def M(p: int, q: int, N: int) -> int:
-    x = p*q
+    x = p * q
     ps_power = 1
     maximum = x
     while True:
@@ -46,7 +46,7 @@ def main(N: int) -> int:
         for q in PRIMES:
             if p == q:
                 break
-            if (p*q) > N:
+            if (p * q) > N:
                 break
             summed += M(p, q, N)
     return summed

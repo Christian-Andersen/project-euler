@@ -59,10 +59,9 @@ def are_edges_connected(edges: dict[tuple[int, int], int], size: int) -> bool:
 
 
 matrix = []
-with open('0107_network.txt', 'r') as file:
+with open("0107_network.txt", "r") as file:
     for line in file:
-        matrix.append([int(i)
-                      for i in line.strip().replace('-', '0').split(',')])
+        matrix.append([int(i) for i in line.strip().replace("-", "0").split(",")])
 
 all_edges = {}
 for i in range(len(matrix)):
@@ -102,9 +101,9 @@ def edge_swap(edges, size):
     return None
 
 
-print(old_total_wegith-sum(list(new_edges.values())))
+print(old_total_wegith - sum(list(new_edges.values())))
 while True:
     new_edges = edge_swap(new_edges, len(matrix))
     if new_edges is None:
         break
-    print(old_total_wegith-sum(list(new_edges.values())))
+    print(old_total_wegith - sum(list(new_edges.values())))

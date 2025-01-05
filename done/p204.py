@@ -1,5 +1,6 @@
 from numba import njit
 
+
 @njit
 def main():
     N = 1000000001
@@ -25,5 +26,6 @@ def main():
 
     print(answer)
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     main()

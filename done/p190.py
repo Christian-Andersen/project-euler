@@ -5,19 +5,19 @@ from numba import njit
 
 @njit
 def p(x, m):
-    return np.prod(np.power(x, (1+np.arange(m))))
+    return np.prod(np.power(x, (1 + np.arange(m))))
 
 
 @njit
 def main():
     summed = 0
-    for m in range(2, 15+1):
+    for m in range(2, 15 + 1):
         lr = 2**-20
         d = 0
         best = 0
         while True:
             d += lr
-            s = np.linspace(1-d, 1+d, m)
+            s = np.linspace(1 - d, 1 + d, m)
             if (s <= 0).any():
                 break
             product = p(s, m)

@@ -1,7 +1,7 @@
 def is_prime(x):
     if x <= 1:
         return False
-    for i in range(2, int(x**0.5)+1):
+    for i in range(2, int(x**0.5) + 1):
         if (x % i) == 0:
             return False
     return True
@@ -19,7 +19,7 @@ for number_of_digits in range(2, 14):
     new_harshad_numbers = []
     for i in harshad_numbers:
         for j in digits:
-            x = i+j
+            x = i + j
             if 0 == (int(x) % sum(int(digit) for digit in x)):
                 new_harshad_numbers.append(x)
     harshad_numbers = new_harshad_numbers
@@ -31,7 +31,7 @@ for number_of_digits in range(2, 14):
 summed = 0
 for i in all_harshad_numbers:
     for j in digits:
-        x = int(i+j)
+        x = int(i + j)
         if x < 10**14:
             if is_prime(x):
                 summed += x

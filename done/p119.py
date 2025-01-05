@@ -5,4 +5,4 @@ for base in range(2, 1000):
         if base == summed:
             a.append(base**power)
 a.sort()
-print(a[2-1], a[10-1], a[30-1])
+print(a[2 - 1], a[10 - 1], a[30 - 1])

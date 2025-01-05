@@ -7,11 +7,11 @@ def find_ways(N, L):
             if idx < len(way):
                 new_ways.append(way)
             else:
-                new_ways.append(way+[False])
-                new_ways.append(way+L*[True])
+                new_ways.append(way + [False])
+                new_ways.append(way + L * [True])
         ways = new_ways
     ways = [way for way in ways if len(way) == N]
     return ways
 
 
-print(len(find_ways(50, 2))-1)
+print(len(find_ways(50, 2)) - 1)

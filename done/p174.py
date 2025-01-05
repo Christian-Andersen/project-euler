@@ -4,7 +4,7 @@ from numba import njit
 
 @njit
 def number_of_ways():
-    counter = 1000001*[0]
+    counter = 1000001 * [0]
     size = 0
     while True:
         size += 1
@@ -14,11 +14,11 @@ def number_of_ways():
             if tiles_used <= 1_000_000:
                 counter[tiles_used] += 1
         if (size % 100_000) == 0:
-            big_n = 10*[0]
+            big_n = 10 * [0]
             for n in range(1, 11):
                 for i in counter:
                     if i == n:
-                        big_n[n-1] += 1
+                        big_n[n - 1] += 1
             print(sum(big_n))
 
 

@@ -11,18 +11,18 @@ def main():
     while True:
         z += 1
         for d1 in squares_list:
-            if (z+z+d1) not in squares:
+            if (z + z + d1) not in squares:
                 continue
             for d2 in squares_list:
                 if (d1 + d2) not in squares:
                     continue
-                if (z+z+d1+d2) not in squares:
+                if (z + z + d1 + d2) not in squares:
                     continue
-                if (z+z+d1+d1+d2) not in squares:
+                if (z + z + d1 + d1 + d2) not in squares:
                     continue
-                x = z+d1+d2
-                y = z+d1
-                print(x, y, z, x+y+z)
+                x = z + d1 + d2
+                y = z + d1
+                print(x, y, z, x + y + z)
 
 
 if __name__ == "__main__":
