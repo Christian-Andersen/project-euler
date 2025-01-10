@@ -23,6 +23,7 @@ def main():
                 x = z + d1 + d2
                 y = z + d1
                 print(x, y, z, x + y + z)
+                return x + y + z
 
 
 if __name__ == "__main__":

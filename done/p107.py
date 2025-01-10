@@ -58,52 +58,55 @@ def are_edges_connected(edges: dict[tuple[int, int], int], size: int) -> bool:
     return False
 
 
-matrix = []
-with open("0107_network.txt", "r") as file:
-    for line in file:
-        matrix.append([int(i) for i in line.strip().replace("-", "0").split(",")])
+def main():
+    matrix = []
+    with open("0107_network.txt", "r") as file:
+        for line in file:
+            matrix.append([int(i) for i in line.strip().replace("-", "0").split(",")])
 
-all_edges = {}
-for i in range(len(matrix)):
-    for j in range(i):
-        if matrix[i][j]:
-            all_edges[(i, j)] = matrix[i][j]
-old_total_wegith = sum(list(all_edges.values()))
-all_edges = dict(sorted(all_edges.items(), key=lambda item: item[1]))
+    all_edges = {}
+    for i in range(len(matrix)):
+        for j in range(i):
+            if matrix[i][j]:
+                all_edges[(i, j)] = matrix[i][j]
+    old_total_wegith = sum(list(all_edges.values()))
+    all_edges = dict(sorted(all_edges.items(), key=lambda item: item[1]))
 
-edge, weight = list(all_edges.items())[0]
-new_edges = {edge: weight}
-visted = set(edge)
-while not are_edges_connected(new_edges, len(matrix)):
-    for edge, weight in all_edges.items():
-        test = (edge[0] in visted, edge[1] in visted)
-        if all(test):
-            continue
-        if not any(test):
-            continue
-        new_edges[edge] = weight
-        visted.update(edge)
-        break
-
-
-def edge_swap(edges, size):
-    for removed_edge, removed_weight in edges.items():
-        for new_edge, new_weight in all_edges.items():
-            edges_copy = deepcopy(edges)
-            if new_edge in edges_copy:
+    edge, weight = list(all_edges.items())[0]
+    new_edges = {edge: weight}
+    visted = set(edge)
+    while not are_edges_connected(new_edges, len(matrix)):
+        for edge, weight in all_edges.items():
+            test = (edge[0] in visted, edge[1] in visted)
+            if all(test):
                 continue
-            if new_weight >= removed_weight:
+            if not any(test):
                 continue
-            edges_copy.pop(removed_edge)
-            edges_copy[new_edge] = new_weight
-            if are_edges_connected(edges_copy, size):
-                return edges_copy
-    return None
+            new_edges[edge] = weight
+            visted.update(edge)
+            break
 
+    def edge_swap(edges, size):
+        for removed_edge, removed_weight in edges.items():
+            for new_edge, new_weight in all_edges.items():
+                edges_copy = deepcopy(edges)
+                if new_edge in edges_copy:
+                    continue
+                if new_weight >= removed_weight:
+                    continue
+                edges_copy.pop(removed_edge)
+                edges_copy[new_edge] = new_weight
+                if are_edges_connected(edges_copy, size):
+                    return edges_copy
+        return None
 
-print(old_total_wegith - sum(list(new_edges.values())))
-while True:
-    new_edges = edge_swap(new_edges, len(matrix))
-    if new_edges is None:
-        break
     print(old_total_wegith - sum(list(new_edges.values())))
+    while True:
+        new_edges = edge_swap(new_edges, len(matrix))
+        if new_edges is None:
+            break
+    return old_total_wegith - sum(list(new_edges.values()))
+
+
+if __name__ == "__main__":
+    main()

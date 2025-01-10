@@ -36,20 +36,26 @@ def get_continued_fraction(r, length):
     return a
 
 
-unsolved = list(range(2, 1_000 + 1))
-largest = 0
-for depth_power in range(1, 6):
-    for D in unsolved.copy():
-        if D in SQUARES:
-            continue
-        r = decimal.Decimal(D).sqrt()
-        a = tuple(get_continued_fraction(r, 10**depth_power))
-        for i in range(0, len(a)):
-            x = h(i, a)
-            y = k(i, a)
-            if (x**2 - D * (y**2)) == 1:
-                if x >= largest:
-                    largest = x
-                    print(D, x)
-                unsolved.remove(D)
-                break
+def main():
+    unsolved = list(range(2, 1_000 + 1))
+    largest = 0
+    for depth_power in range(1, 6):
+        for D in unsolved.copy():
+            if D in SQUARES:
+                continue
+            r = decimal.Decimal(D).sqrt()
+            a = tuple(get_continued_fraction(r, 10**depth_power))
+            for i in range(0, len(a)):
+                x = h(i, a)
+                y = k(i, a)
+                if (x**2 - D * (y**2)) == 1:
+                    if x >= largest:
+                        largest = x
+                        print(D, x)
+                    unsolved.remove(D)
+                    break
+    return largest
+
+
+if __name__ == "__main__":
+    main()

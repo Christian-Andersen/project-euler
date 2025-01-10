@@ -43,8 +43,14 @@ def get_smallest_N(k):
     return N
 
 
-N_set = set()
-for k in range(2, 12_000 + 1):
-    print(k)
-    N_set.add(get_smallest_N(k))
-print(sum(N_set))
+def main():
+    N_set = set()
+    for k in range(2, 12_000 + 1):
+        print(k)
+        N_set.add(get_smallest_N(k))
+    answer = sum(N_set)
+    return answer
+
+
+if __name__ == "__main__":
+    main()

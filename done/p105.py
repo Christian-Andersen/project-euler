@@ -16,9 +16,14 @@ def check_set(s: list[int]) -> int:
     return sum(s)
 
 
-if __name__ == "__main__":
+def main():
     with open("./0105_sets.txt", "r") as f:
         sets = [[int(i) for i in line.strip().split(",")] for line in f.readlines()]
     with multiprocessing.Pool() as pool:
         results = pool.map(check_set, sets)
     print(sum(results))
+    return sum(results)
+
+
+if __name__ == "__main__":
+    main()

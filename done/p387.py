@@ -36,3 +36,5 @@ for i in all_harshad_numbers:
             if is_prime(x):
                 summed += x
 print(summed)
+if __name__ == "__main__":
+    main()

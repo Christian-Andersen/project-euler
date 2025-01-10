@@ -1,11 +1,7 @@
 import numpy as np
 
 
-start = 10**12 + 7 * 10**10
-step = 10**8
-
-
-def f(start):
+def f(start, step):
     total_discs = np.arange(start, start + step, dtype=np.uint64)
     blue_discs = np.multiply(total_discs, np.sqrt(1 / 2))
     where = np.isclose(blue_discs, blue_discs.round(), rtol=0).nonzero()[0]
@@ -20,7 +16,14 @@ def f(start):
             blue_disc += 1
 
 
-while True:
-    print(f"{start:,}")
-    f(start)
-    start += step
+def main():
+    start = 10**12 + 7 * 10**10
+    step = 10**8
+    while True:
+        print(f"{start:,}")
+        f(start, step)
+        start += step
+
+
+if __name__ == "__main__":
+    main()

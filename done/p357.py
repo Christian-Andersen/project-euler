@@ -29,9 +29,15 @@ def check(x):
     return True
 
 
-summed = 0
-for n in tqdm(valid_numbers):
-    if check(n):
-        summed += n
-print(summed)
-print([round(TIME / (10**9), 2) for TIME in TIMES])
+def main():
+    summed = 0
+    for n in tqdm(valid_numbers):
+        if check(n):
+            summed += n
+    print(summed)
+    print([round(TIME / (10**9), 2) for TIME in TIMES])
+    return [round(TIME / (10**9), 2) for TIME in TIMES]
+
+
+if __name__ == "__main__":
+    main()

@@ -45,4 +45,11 @@ def check_fixed_size(n: int) -> int:
 
 assert check_fixed_size(4) == 1
 assert check_fixed_size(7) == 70
-print(check_fixed_size(12))
+
+
+def main():
+    return check_fixed_size(12)
+
+
+if __name__ == "__main__":
+    main()

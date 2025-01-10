@@ -28,7 +28,12 @@ def extend(d):
     return new_d
 
 
-ways = {("L", 1): 1, ("O", 0): 1, ("A", 0): 1}
-for _ in range(2, 31):
-    ways = extend(ways)
-print(sum(ways.values()))
+def main():
+    ways = {("L", 1): 1, ("O", 0): 1, ("A", 0): 1}
+    for _ in range(2, 31):
+        ways = extend(ways)
+    return sum(ways.values())
+
+
+if __name__ == "__main__":
+    main()

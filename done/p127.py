@@ -48,7 +48,7 @@ def main():
             ):
                 total += c
                 print(c, total)
-    print(total)
+    return total
 
 
 if __name__ == "__main__":

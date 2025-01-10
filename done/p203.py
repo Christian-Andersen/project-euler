@@ -15,21 +15,26 @@ def get_next_row(row_in: list) -> list:
     return row_out
 
 
-rows = [[1]]
-while len(rows) < 51:
-    rows.append(get_next_row(rows[-1]))
+def main():
+    rows = [[1]]
+    while len(rows) < 51:
+        rows.append(get_next_row(rows[-1]))
 
-numbers = set()
-for row in rows:
-    for number in row:
-        numbers.add(number)
+    numbers = set()
+    for row in rows:
+        for number in row:
+            numbers.add(number)
 
-square_primes = [i**2 for i in range(10**3) if is_prime(i)]
+    square_primes = [i**2 for i in range(10**3) if is_prime(i)]
 
-for number in numbers.copy():
-    for i in square_primes:
-        if i > number:
-            break
-        if (number % i) == 0:
-            numbers.discard(number)
-print(sum(numbers))
+    for number in numbers.copy():
+        for i in square_primes:
+            if i > number:
+                break
+            if (number % i) == 0:
+                numbers.discard(number)
+    return sum(numbers)
+
+
+if __name__ == "__main__":
+    main()

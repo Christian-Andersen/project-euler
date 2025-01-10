@@ -14,6 +14,7 @@ def main():
     for n in range(1, 1000000000000):
         u.append(f(u[-1]))
         print(u[-1])
+        return u[-1]
 
 
 if __name__ == "__main__":

@@ -26,6 +26,7 @@ def main():
         print(m, int(best))
         summed += int(best)
     print(summed)
+    return summed
 
 
 if __name__ == "__main__":

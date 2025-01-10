@@ -36,6 +36,7 @@ def main():
                     if largest > best_largest:
                         best_largest = largest
                         print(a, b, c, d, largest)
+                        return largest
 
 
 if __name__ == "__main__":

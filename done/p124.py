@@ -21,8 +21,13 @@ def rad(x):
     return out
 
 
-d = {}
-for n in tqdm(range(1, 100_001)):
-    d[n] = rad(n)
-sorted_d = dict(sorted(d.items(), key=lambda item: item[1]))
-print(list(sorted_d.keys())[10_000 - 1])
+def main():
+    d = {}
+    for n in tqdm(range(1, 100_001)):
+        d[n] = rad(n)
+    sorted_d = dict(sorted(d.items(), key=lambda item: item[1]))
+    return list(sorted_d.keys())[10_000 - 1]
+
+
+if __name__ == "__main__":
+    main()

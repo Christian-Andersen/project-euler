@@ -30,7 +30,7 @@ def main():
             square_change += 2
             square += square_change
         if out:
-            print(round(l_squared**0.5))
+            return round(l_squared**0.5)
 
 
 if __name__ == "__main__":

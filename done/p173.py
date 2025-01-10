@@ -14,6 +14,7 @@ def main():
                 counter += 1
         if (size % 100_000) == 0:
             print(counter)
+            return counter
 
 
 if __name__ == "__main__":

@@ -24,7 +24,13 @@ def make_chain(start_of_chain: int) -> list[int]:
     return chain
 
 
-for n in range(1_000_000):
-    out = make_chain(n)
-    if out is not None:
-        print(n, len(out), out)
+def main():
+    for n in range(1_000_000):
+        out = make_chain(n)
+        if out is not None:
+            print(n, len(out), out)
+            return n
+
+
+if __name__ == "__main__":
+    main()

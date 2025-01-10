@@ -38,7 +38,8 @@ def d(n: Fraction) -> Fraction:
 
 def main():
     assert sum(d(Fraction(n)) for n in range(5, 100 + 1)) == 2438
-    print(sum(d(Fraction(n)) for n in range(5, N + 1)))
+    answer = sum(d(Fraction(n)) for n in range(5, N + 1))
+    return answer
 
 
 if __name__ == "__main__":

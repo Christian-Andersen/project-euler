@@ -14,4 +14,9 @@ def solve(a: int):
         print(b, x)
 
 
-solve(1777)
+def main():
+    return solve(1777)
+
+
+if __name__ == "__main__":
+    main()

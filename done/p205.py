@@ -21,10 +21,15 @@ C = np.array(C, dtype=np.uint8).sum(axis=1)
 print(P.shape)
 print(C.shape)
 
-games_count = 0
-wins_P = 0
-for score_P in tqdm(P):
-    games_count += len(C)
-    wins_P += (score_P > C).sum()
 
-print(round(wins_P / games_count, 7))
+def main():
+    games_count = 0
+    wins_P = 0
+    for score_P in tqdm(P):
+        games_count += len(C)
+        wins_P += (score_P > C).sum()
+    return round(wins_P / games_count, 7)
+
+
+if __name__ == "__main__":
+    main()

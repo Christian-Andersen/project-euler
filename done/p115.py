@@ -24,7 +24,11 @@ def ways(n: int, previous: tuple) -> int:
             return ways(n - 1, cut + (True,)) + ways(n - 1, cut + (False,))
 
 
-for n in range(1000):
-    if ways(n, M * (False,)) >= 1_000_000:
-        print(n)
-        break
+def main():
+    for n in range(1000):
+        if ways(n, M * (False,)) >= 1_000_000:
+            return n
+
+
+if __name__ == "__main__":
+    main()

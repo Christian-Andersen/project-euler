@@ -25,6 +25,7 @@ def main():
     answer = N - sum(hammings)
 
     print(answer)
+    return answer
 
 
 if __name__ == "__main__":

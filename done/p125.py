@@ -21,10 +21,15 @@ def is_sum_of_squares(x):
     return False
 
 
-print("Iterating Over Pals")
-total = 0
-for i in tqdm(pals):
-    if is_sum_of_squares(i):
-        total += i
-print("Done")
-print(total)
+def main():
+    print("Iterating Over Pals")
+    total = 0
+    for i in tqdm(pals):
+        if is_sum_of_squares(i):
+            total += i
+    print("Done")
+    return total
+
+
+if __name__ == "__main__":
+    main()

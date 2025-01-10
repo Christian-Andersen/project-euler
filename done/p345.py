@@ -43,13 +43,18 @@ def improve(x, i, j, best_score):
     return None, None
 
 
-i = np.arange(x.shape[0])
-j = np.arange(x.shape[1])
-best_score = 0
-while True:
-    score, i_temp = improve(x, i, j, best_score)
-    if score is None:
-        break
-    best_score = score
-    i = i_temp
-print(best_score)
+def main():
+    i = np.arange(x.shape[0])
+    j = np.arange(x.shape[1])
+    best_score = 0
+    while True:
+        score, i_temp = improve(x, i, j, best_score)
+        if score is None:
+            break
+        best_score = score
+        i = i_temp
+    return best_score
+
+
+if __name__ == "__main__":
+    main()

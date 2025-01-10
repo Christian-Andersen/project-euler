@@ -43,7 +43,13 @@ def g(n: int):
     return count
 
 
-d = {}
-for i in range(3, 21):
-    d = f(d)
-    print(i, sum(d.values()))
+def main():
+    d = {}
+    for i in range(3, 21):
+        d = f(d)
+        print(i, sum(d.values()))
+    return sum(d.values())
+
+
+if __name__ == "__main__":
+    main()

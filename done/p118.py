@@ -37,7 +37,7 @@ def main():
     orders = permutations(digits)
     with multiprocessing.Pool() as pool:
         out = pool.map(get_sets, orders)
-    print(len(set().union(*out)))
+    return len(set().union(*out))
 
 
 if __name__ == "__main__":

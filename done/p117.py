@@ -14,4 +14,9 @@ def f(space_left: int) -> int:
     return f(space_left - 1) + f(space_left - 2) + f(space_left - 3) + f(space_left - 4)
 
 
-print(f(50))
+def main():
+    return f(50)
+
+
+if __name__ == "__main__":
+    main()

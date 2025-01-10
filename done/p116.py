@@ -14,4 +14,9 @@ def find_ways(N, L):
     return ways
 
 
-print(len(find_ways(50, 2)) - 1)
+def main():
+    return len(find_ways(50, 2)) - 1
+
+
+if __name__ == "__main__":
+    main()

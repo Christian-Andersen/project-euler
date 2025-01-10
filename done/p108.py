@@ -2,7 +2,7 @@ from numba import njit
 
 
 @njit
-def main() -> int:
+def main():
     n = 1
     while True:
         n += 1

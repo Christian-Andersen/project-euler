@@ -20,10 +20,11 @@ def number_of_ways():
                     if i == n:
                         big_n[n - 1] += 1
             print(sum(big_n))
+            return sum(big_n)
 
 
 def main():
-    number_of_ways()
+    return number_of_ways()
 
 
 if __name__ == "__main__":

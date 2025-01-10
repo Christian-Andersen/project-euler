@@ -35,7 +35,8 @@ def main():
     assert f(42) * 42 == 210
     assert f(89) * 89 == 1121222
     assert (sum(f(n) for n in range(1, 100 + 1))) == 11363107
-    print(sum(f(n) for n in trange(1, 10000 + 1)))
+    answer = sum(f(n) for n in trange(1, 10000 + 1))
+    return answer
 
 
 if __name__ == "__main__":

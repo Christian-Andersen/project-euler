@@ -23,4 +23,9 @@ def ways(n: int, previous: tuple[bool, bool, bool]) -> int:
             )
 
 
-print(ways(50, (False, False, False)))
+def main():
+    return ways(50, (False, False, False))
+
+
+if __name__ == "__main__":
+    main()

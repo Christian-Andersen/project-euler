@@ -13,14 +13,19 @@ def extend(ways):
     return new_ways
 
 
-answers = 1_000_000 * [float("inf")]
-ways = [(1,)]
-for way in ways:
-    answers[1] = 0
-for m in range(1, 30):
-    ways = extend(ways)
+def main():
+    answers = 1_000_000 * [float("inf")]
+    ways = [(1,)]
     for way in ways:
-        answers[max(way)] = min(answers[max(way)], m)
-    if sum(answers[1:201]) != float("inf"):
-        break
-print(sum(answers[1:201]))
+        answers[1] = 0
+    for m in range(1, 30):
+        ways = extend(ways)
+        for way in ways:
+            answers[max(way)] = min(answers[max(way)], m)
+        if sum(answers[1:201]) != float("inf"):
+            break
+    return sum(answers[1:201])
+
+
+if __name__ == "__main__":
+    main()

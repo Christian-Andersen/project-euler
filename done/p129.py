@@ -15,6 +15,12 @@ def A(n: int) -> int:
     exit()
 
 
-for n in count(1_000_000):
-    if gcd(n, 10) == 1:
-        print(n, A(n))
+def main():
+    for n in count(1_000_000):
+        if gcd(n, 10) == 1:
+            print(n, A(n))
+            return A(n)
+
+
+if __name__ == "__main__":
+    main()

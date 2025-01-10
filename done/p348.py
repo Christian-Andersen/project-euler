@@ -36,6 +36,7 @@ def main():
         i += 1
     if l := [key for key, value in palindromes.items() if value == 4]:
         print(sum(l))
+        return sum(l)
 
 
 if __name__ == "__main__":

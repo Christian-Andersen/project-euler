@@ -35,7 +35,12 @@ def S(n, d):
             return prime_sum
 
 
-total = 0
-for i in range(10):
-    total += S(10, i)
-print(total)
+def main():
+    total = 0
+    for i in range(10):
+        total += S(10, i)
+    return total
+
+
+if __name__ == "__main__":
+    main()

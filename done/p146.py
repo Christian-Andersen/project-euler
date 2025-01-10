@@ -28,7 +28,7 @@ def sum_up_to(n: int) -> int:
 
 def main():
     assert sum_up_to(1_000_000) == 1242490
-    print(sum_up_to(N))
+    return sum_up_to(N)
 
 
 if __name__ == "__main__":

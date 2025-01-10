@@ -27,15 +27,21 @@ def has_right_angle(P, Q):
     return False
 
 
-count = 0
-for x_1 in range(N + 1):
-    for x_2 in range(N + 1):
-        for y_1 in range(N + 1):
-            for y_2 in range(N + 1):
-                out = has_right_angle((x_1, x_2), (y_1, y_2))
-                # print((x_1, x_2), (y_1, y_2), out)
-                if out is None:
-                    continue
-                if out:
-                    count += 1
-print(count)
+def main():
+    count = 0
+    for x_1 in range(N + 1):
+        for x_2 in range(N + 1):
+            for y_1 in range(N + 1):
+                for y_2 in range(N + 1):
+                    out = has_right_angle((x_1, x_2), (y_1, y_2))
+                    # print((x_1, x_2), (y_1, y_2), out)
+                    if out is None:
+                        continue
+                    if out:
+                        count += 1
+    print(count)
+    return count
+
+
+if __name__ == "__main__":
+    main()

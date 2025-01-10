@@ -32,6 +32,8 @@ def main():
                 if (c % hole_side) == 0:
                     counter += 1
     print(counter)
+    return counter
 
 
-main()
+if __name__ == "__main__":
+    main()
