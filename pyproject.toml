@@ -5,7 +5,16 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "numba>=0.60.0",
+    "numpy>=2.0.2",
     "pytest>=8.3.4",
     "pytest-timeout>=2.3.1",
+    "pytest-xdist>=3.6.1",
     "requests>=2.32.3",
+    "ruff>=0.9.3",
+    "sympy>=1.13.3",
+    "torch>=2.4.1",
+    "torchaudio>=2.4.1",
+    "torchvision>=0.19.1",
+    "tqdm>=4.67.1",
 ]
