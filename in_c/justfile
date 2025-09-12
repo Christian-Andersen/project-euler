@@ -1,0 +1,5 @@
+PROBLEM_NUMBER := '1'
+@default:
+	gcc {{PROBLEM_NUMBER}}.c
+	./a.out
+	rm a.out
