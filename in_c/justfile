@@ -1,5 +1,5 @@
-PROBLEM_NUMBER := '1'
+PROBLEM_NUMBER := '4'
 @default:
-	gcc {{PROBLEM_NUMBER}}.c
+	gcc -Wall -Wextra -pedantic -Werror -lm {{PROBLEM_NUMBER}}.c
 	./a.out
 	rm a.out
