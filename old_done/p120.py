@@ -1,4 +1,4 @@
-def get_r_max(a):
+def get_r_max(a: int) -> int:
     r_s = []
     r_max = 0
     for n in range(2 * a):
@@ -9,7 +9,7 @@ def get_r_max(a):
     return r_max
 
 
-def main():
+def main() -> int:
     summed = 0
     for a in range(3, 1000 + 1):
         summed += get_r_max(a)

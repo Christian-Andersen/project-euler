@@ -2,7 +2,7 @@
 from fractions import Fraction
 
 
-def main():
+def main() -> Fraction:
     probs = [Fraction(1, 2), Fraction(1, 2)]
     blue = [1, 0]
     red = [0, 1]
@@ -21,11 +21,11 @@ def main():
         probs = new_probs
         blue = new_blue
         red = new_red
-        assert sum(probs) == 1
-        assert [(b + r) == turn for b, r in zip(blue, red)]
-        assert len(blue) == len(red) == len(probs) == (2 ** (turn))
+        assert sum(probs) == 1  # noqa: S101
+        assert [(b + r) == turn for b, r in zip(blue, red, strict=False)]  # noqa: S101
+        assert len(blue) == len(red) == len(probs) == (2 ** (turn))  # noqa: S101
         winning_prob = Fraction(0)
-        for b, r, p in zip(blue, red, probs):
+        for b, r, p in zip(blue, red, probs, strict=False):
             if b > r:
                 winning_prob += p
         prize = Fraction(winning_prob.denominator, winning_prob.numerator).__floor__()

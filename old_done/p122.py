@@ -1,7 +1,8 @@
 # Efficient Exponentiation
+from collections.abc import Iterable
 
 
-def extend(ways):
+def extend(ways: Iterable[tuple[int, ...]]) -> set[tuple[int, ...]]:
     new_ways = set()
     for way in ways:
         for i in range(len(way)):
@@ -9,14 +10,14 @@ def extend(ways):
                 new_power = way[i] + way[j]
                 if new_power in way:
                     continue
-                new_ways.add(tuple(sorted(way + (new_power,))))
+                new_ways.add(tuple(sorted((*way, new_power))))
     return new_ways
 
 
-def main():
+def main() -> float:
     answers = 1_000_000 * [float("inf")]
     ways = [(1,)]
-    for way in ways:
+    for _way in ways:
         answers[1] = 0
     for m in range(1, 30):
         ways = extend(ways)

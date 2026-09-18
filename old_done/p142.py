@@ -3,7 +3,7 @@ from numba import njit
 
 
 @njit
-def main():
+def main() -> int:
     squares_list = [i**2 for i in range(1, 10**6)]
     squares = set(squares_list)
     squares_list = squares_list[:10000]

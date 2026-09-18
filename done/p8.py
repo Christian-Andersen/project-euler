@@ -25,7 +25,7 @@ S = """
 """
 
 
-def main():
+def main() -> int:
     adjacency_length = 13
     number = [int(i) for i in S.replace("\n", "")]
     greatest_product = 0

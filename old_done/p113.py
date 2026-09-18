@@ -14,7 +14,7 @@ def expand_decreasing(d: dict[int, int]) -> dict[int, int]:
     return out
 
 
-def main():
+def main() -> int:
     x = dict.fromkeys(range(1, 10), 1)
     y = dict.fromkeys(range(1, 10), 1)
     answer = 9

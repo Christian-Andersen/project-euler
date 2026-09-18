@@ -1,4 +1,4 @@
-def main():
+def main() -> int:
     square = 0
     square_change = -1
     l_squared = 29

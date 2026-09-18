@@ -4,17 +4,17 @@ from functools import cache
 
 @cache
 def f(space_left: int) -> int:
-    assert space_left >= 0
+    assert space_left >= 0  # noqa: S101
     if space_left <= 1:
         return 1
-    if space_left == 2:
+    if space_left == 2:  # noqa: PLR2004
         return 2  # empty and red
-    if space_left == 3:
+    if space_left == 3:  # noqa: PLR2004
         return 4  # empty, red left, right right, green
     return f(space_left - 1) + f(space_left - 2) + f(space_left - 3) + f(space_left - 4)
 
 
-def main():
+def main() -> int:
     return f(50)
 
 

@@ -1,4 +1,4 @@
-def main():
+def main() -> int:
     square_base = 1
     square = square_base**2
     summed = 0
@@ -14,7 +14,6 @@ def main():
                 square = square_base**2
             if sqrt_h != square:
                 continue
-            h = square
             summed += a + a + b
     print(summed)
     return summed

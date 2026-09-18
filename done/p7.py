@@ -2,7 +2,7 @@
 from sympy.ntheory.generate import prime
 
 
-def main():
+def main() -> int:
     return prime(10_001)
 
 

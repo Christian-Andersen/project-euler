@@ -25,7 +25,7 @@ S = """
 """
 
 
-def main():
+def main() -> int:
     array = np.array([list(map(int, i.split(" "))) for i in S.split("\n") if i])
     greatest_product = 0
     for i in range(17):

@@ -30,7 +30,7 @@ x = np.array([[7, 53, 183, 439, 863],
 """
 
 
-def improve(x, i, j, best_score):
+def improve(x: np.ndarray, i: np.ndarray, j: np.ndarray, best_score: float) -> tuple[np.ndarray, float] | None:
     for cycle_length in range(2, x.shape[0] + 1):
         for idxs in combinations(i, cycle_length):
             combs = [idxs[k:] + idxs[:k] for k in range(1, len(idxs))]
@@ -39,20 +39,19 @@ def improve(x, i, j, best_score):
                 i_copy[idxs,] = i_copy[comb,]
                 score = x[i_copy, j].sum()
                 if score > best_score:
-                    return score, i_copy
-    return None, None
+                    return i_copy, score
+    return None
 
 
-def main():
+def main() -> float:
     i = np.arange(x.shape[0])
     j = np.arange(x.shape[1])
     best_score = 0
     while True:
-        score, i_temp = improve(x, i, j, best_score)
-        if score is None:
+        improved = improve(x, i, j, best_score)
+        if improved is None:
             break
-        best_score = score
-        i = i_temp
+        i, best_score = improved
     return best_score
 
 

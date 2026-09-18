@@ -1,4 +1,5 @@
 from copy import deepcopy
+from pathlib import Path
 
 import numpy as np
 
@@ -7,11 +8,7 @@ def is_path(graph: list[list], node_1: int, node_2: int, visted: set) -> bool:
     if node_1 == node_2:
         return True
     visted.add(node_1)
-    for new_node in graph[node_1]:
-        if new_node not in visted:
-            if is_path(graph, new_node, node_2, visted):
-                return True
-    return False
+    return any(new_node not in visted and is_path(graph, new_node, node_2, visted) for new_node in graph[node_1])
 
 
 def is_connected(graph: list[list]) -> bool:
@@ -23,15 +20,15 @@ def is_connected(graph: list[list]) -> bool:
 
 
 def is_matrix_connected(matrix: np.ndarray) -> bool:
-    visted = set([0])
-    nodes = set([0])
-    seen = set([0])
+    visted = {0}
+    nodes = {0}
+    seen = {0}
     while nodes:
         node = nodes.pop()
         visted.add(node)
         nodes.update(list(matrix[node].nonzero()[0]))
         seen.update(nodes)
-        if len(seen) == 40:
+        if len(seen) == 40:  # noqa: PLR2004
             return True
         nodes.difference_update(visted)
     return len(matrix) == len(visted)
@@ -54,16 +51,13 @@ def are_edges_connected(edges: dict[tuple[int, int], int], size: int) -> bool:
         if no_update:
             return False
         edges_list = new_edges_list
-    if len(visted) == size:
-        return True
-    return False
+    return len(visted) == size
 
 
-def main():
+def main() -> int:  # noqa: C901
     matrix = []
-    with open("0107_network.txt") as file:
-        for line in file:
-            matrix.append([int(i) for i in line.strip().replace("-", "0").split(",")])
+    with Path("0107_network.txt").open() as file:
+        matrix.extend([[int(i) for i in line.strip().replace("-", "0").split(",")] for line in file])
 
     all_edges = {}
     for i in range(len(matrix)):
@@ -73,7 +67,7 @@ def main():
     old_total_wegith = sum(list(all_edges.values()))
     all_edges = dict(sorted(all_edges.items(), key=lambda item: item[1]))
 
-    edge, weight = list(all_edges.items())[0]
+    edge, weight = next(iter(all_edges.items()))
     new_edges = {edge: weight}
     visted = set(edge)
     while not are_edges_connected(new_edges, len(matrix)):
@@ -87,7 +81,7 @@ def main():
             visted.update(edge)
             break
 
-    def edge_swap(edges, size):
+    def edge_swap(edges: dict[tuple[int, int], int], size: int) -> dict[tuple[int, int], int] | None:
         for removed_edge, removed_weight in edges.items():
             for new_edge, new_weight in all_edges.items():
                 edges_copy = deepcopy(edges)
@@ -106,7 +100,7 @@ def main():
         new_edges = edge_swap(new_edges, len(matrix))
         if new_edges is None:
             break
-    return old_total_wegith - sum(list(new_edges.values()))
+    return old_total_wegith - sum(list(new_edges.values()))  # ty: ignore[unresolved-attribute]
 
 
 if __name__ == "__main__":

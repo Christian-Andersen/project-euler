@@ -3,7 +3,7 @@ from numba import njit
 
 
 @njit
-def number_of_ways():
+def number_of_ways() -> int:
     counter = 1000001 * [0]
     size = 0
     while True:
@@ -11,7 +11,7 @@ def number_of_ways():
         for size_diff in range(2, size, 2):
             hole_size = size - size_diff
             tiles_used = size**2 - hole_size**2
-            if tiles_used <= 1_000_000:
+            if tiles_used <= 1_000_000:  # noqa: PLR2004
                 counter[tiles_used] += 1
         if (size % 100_000) == 0:
             big_n = 10 * [0]
@@ -23,7 +23,7 @@ def number_of_ways():
             return sum(big_n)
 
 
-def main():
+def main() -> int:
     return number_of_ways()
 
 

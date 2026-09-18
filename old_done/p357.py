@@ -19,24 +19,19 @@ valid_numbers = primes - 1
 valid_numbers = valid_numbers[np.isin(2 + np.divide(valid_numbers, 2).round(), primes)]
 
 
-def check(x):
+def check(x: int) -> bool:
     divs, mods = np.divmod(x, np.arange(1, int(x**0.5) + 1))
     divisors_bool = np.equal(mods, 0)
     summed = 1 + np.nonzero(divisors_bool)[0] + divs[divisors_bool]
-    for summ in summed:
-        if summ not in primes_set:
-            return False
-    return True
+    return all(summ in primes_set for summ in summed)
 
 
-def main():
+def main() -> None:
     summed = 0
     for n in tqdm(valid_numbers):
         if check(n):
             summed += n
     print(summed)
-    print([round(TIME / (10**9), 2) for TIME in TIMES])
-    return [round(TIME / (10**9), 2) for TIME in TIMES]
 
 
 if __name__ == "__main__":

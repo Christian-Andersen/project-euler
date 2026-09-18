@@ -1,4 +1,4 @@
-def main():
+def main() -> list[int]:
     a = []
     for base in range(2, 1000):
         for power in range(2, 100):

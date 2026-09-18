@@ -1,27 +1,23 @@
 from tqdm import tqdm
 
 
-def is_prime(x):
+def is_prime(x: int) -> bool:
     if x <= 1:
         return False
-    for i in range(2, int(x**0.5) + 1):
-        if x % i == 0:
-            return False
-    return True
+    return all(x % i != 0 for i in range(2, int(x**0.5) + 1))
 
 
-def rad(x):
+def rad(x: int) -> int:
     if is_prime(x):
         return x
     out = 1
     for i in range(2, int(x / 2) + 1):
-        if x % i == 0:
-            if is_prime(i):
-                out = out * i
+        if x % i == 0 and is_prime(i):
+            out = out * i
     return out
 
 
-def main():
+def main() -> int:
     d = {}
     for n in tqdm(range(1, 100_001)):
         d[n] = rad(n)

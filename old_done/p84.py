@@ -3,9 +3,9 @@ from random import randint, shuffle
 from tqdm import trange
 
 
-def main():
-    CC = ["GO", "JAIL"] + 14 * [None]
-    CH = [
+def main() -> float | None:  # noqa: C901, PLR0912
+    cc = ["GO", "JAIL"] + 14 * [None]
+    ch = [
         "GO",
         "JAIL",
         "C1",
@@ -17,8 +17,8 @@ def main():
         "nextU",
         "back3",
     ] + 6 * [None]
-    shuffle(CC)
-    shuffle(CH)
+    shuffle(cc)
+    shuffle(ch)
     squares = [
         "GO",
         "A1",
@@ -63,19 +63,19 @@ def main():
     ]
     counter = len(squares) * [0]
     player_loc = 0
-    for move in trange(10**7):
-        player_loc += randint(1, 4) + randint(1, 4)
+    for _move in trange(10**7):
+        player_loc += randint(1, 4) + randint(1, 4)  # noqa: S311
         player_loc %= len(squares)
         if squares[player_loc] == "G2J":
             player_loc = squares.index("JAIL")
         elif squares[player_loc].startswith("CC"):
-            card = CC.pop(0)
-            CC.append(card)
+            card = cc.pop(0)
+            cc.append(card)
             if card is not None:
                 player_loc = squares.index(card)
         elif squares[player_loc].startswith("CH"):
-            card = CH.pop(0)
-            CH.append(card)
+            card = ch.pop(0)
+            ch.append(card)
             if card is not None:
                 if card == "back3":
                     player_loc += -3
@@ -100,10 +100,11 @@ def main():
         counter[player_loc] += 1
 
     third_largest = sorted(counter)[-3]
-    for a, b in zip(squares, counter):
+    for a, b in zip(squares, counter, strict=False):
         if b >= third_largest:
             print(a, squares.index(a), "\t", 100 * b / sum(counter))
             return 100 * b / sum(counter)
+    return None
 
 
 if __name__ == "__main__":

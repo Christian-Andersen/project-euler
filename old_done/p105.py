@@ -1,5 +1,6 @@
 import multiprocessing
 from itertools import combinations
+from pathlib import Path
 
 
 def check_set(s: list[int]) -> int:
@@ -10,14 +11,13 @@ def check_set(s: list[int]) -> int:
                     if not set(comb_b).intersection(set(comb_c)):
                         if sum(comb_b) == sum(comb_c):
                             return 0
-                        if len(comb_b) > len(comb_c):
-                            if sum(comb_b) <= sum(comb_c):
-                                return 0
+                        if len(comb_b) > len(comb_c) and sum(comb_b) <= sum(comb_c):
+                            return 0
     return sum(s)
 
 
-def main():
-    with open("./0105_sets.txt") as f:
+def main() -> int:
+    with Path("./0105_sets.txt").open() as f:
         sets = [[int(i) for i in line.strip().split(",")] for line in f]
     with multiprocessing.Pool() as pool:
         results = pool.map(check_set, sets)

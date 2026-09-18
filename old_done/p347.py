@@ -6,28 +6,25 @@ from numba import njit
 def is_prime(x: int) -> bool:
     if x <= 1:
         return False
-    for i in range(2, int(x**0.5) + 1):
-        if (x % i) == 0:
-            return False
-    return True
+    return all(x % i != 0 for i in range(2, int(x**0.5) + 1))
 
 
 @njit
-def M(p: int, q: int, N: int) -> int:
+def m(p: int, q: int, n: int) -> int:
     x = p * q
     ps_power = 1
     maximum = x
     while True:
         x *= p
         ps_power += 1
-        if x > N:
+        if x > n:
             break
         maximum = x
     x //= p
     ps_power -= 1
     while True:
         x *= q
-        if x > N:
+        if x > n:
             x //= q
             if ps_power == 1:
                 break
@@ -39,16 +36,16 @@ def M(p: int, q: int, N: int) -> int:
 
 
 @njit
-def main(N: int) -> int:
-    PRIMES = [i for i in range(N) if is_prime(i)]
+def main(n: int) -> int:
+    primes = [i for i in range(n) if is_prime(i)]
     summed = 0
-    for p in PRIMES:
-        for q in PRIMES:
+    for p in primes:
+        for q in primes:
             if p == q:
                 break
-            if (p * q) > N:
+            if (p * q) > n:
                 break
-            summed += M(p, q, N)
+            summed += m(p, q, n)
     return summed
 
 

@@ -3,18 +3,10 @@ from tqdm import tqdm
 
 P = [[]]
 for _ in range(9):
-    new_P = []
-    for i in range(1, 5):
-        for j in P:
-            new_P.append(j + [i])
-    P = new_P
+    P = [[*j, i] for i in range(1, 5) for j in P]
 C = [[]]
 for _ in range(6):
-    new_C = []
-    for i in range(1, 7):
-        for j in C:
-            new_C.append(j + [i])
-    C = new_C
+    C = [[*j, i] for i in range(1, 7) for j in C]
 
 P = np.array(P, dtype=np.uint8).sum(axis=1)
 C = np.array(C, dtype=np.uint8).sum(axis=1)
@@ -22,13 +14,13 @@ print(P.shape)
 print(C.shape)
 
 
-def main():
+def main() -> float:
     games_count = 0
-    wins_P = 0
-    for score_P in tqdm(P):
+    wins_p = 0
+    for score_p in tqdm(P):
         games_count += len(C)
-        wins_P += (score_P > C).sum()
-    return round(wins_P / games_count, 7)
+        wins_p += (score_p > C).sum()
+    return round(wins_p / games_count, 7)
 
 
 if __name__ == "__main__":

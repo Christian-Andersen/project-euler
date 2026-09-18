@@ -6,7 +6,7 @@ import numpy as np
 OPERATIONS = [np.add, np.subtract, np.multiply, np.divide]
 
 
-def get_sols(a, b, c, d):
+def get_sols(a: int, b: int, c: int, d: int) -> set[float]:
     targets = []
     for number_perm in permutations((a, b, c, d), 4):
         for operation_perm in product(OPERATIONS, repeat=3):
@@ -14,12 +14,11 @@ def get_sols(a, b, c, d):
             for i in range(3):
                 target = operation_perm[i](target, number_perm[i])
             targets.append(target)
-    for target in targets.copy():
-        targets.append(-target)
-    return set(float(i) for i in targets)
+    targets.extend([-target for target in targets.copy()])
+    return {float(i) for i in targets}
 
 
-def main():
+def main() -> int | None:
     start_value = 1
     best_largest = 0
     for d in range(1, 1_000):
@@ -38,6 +37,7 @@ def main():
                         best_largest = largest
                         print(a, b, c, d, largest)
                         return largest
+    return None
 
 
 if __name__ == "__main__":

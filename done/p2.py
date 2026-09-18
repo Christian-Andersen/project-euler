@@ -2,7 +2,7 @@
 from itertools import count
 
 
-def fib(x):
+def fib(x: int) -> int:
     if x == 0:
         return 1
     if x == 1:
@@ -10,11 +10,11 @@ def fib(x):
     return fib(x - 1) + fib(x - 2)
 
 
-def main():
+def main() -> int:
     answer = 0
     for i in count():
         fib_i = fib(i)
-        if fib_i > 4_000_000:
+        if fib_i > 4_000_000:  # noqa: PLR2004
             break
         if (fib_i % 2) == 0:
             answer += fib_i

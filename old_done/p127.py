@@ -2,20 +2,17 @@ from functools import cache
 from math import gcd, prod
 
 
-def is_prime(x):
+def is_prime(x: int) -> bool:
     if x <= 1:
         return False
-    for i in range(2, int(x**0.5) + 1):
-        if (x % i) == 0:
-            return False
-    return True
+    return all(x % i != 0 for i in range(2, int(x**0.5) + 1))
 
 
 PRIMES = [i for i in range(120_000) if is_prime(i)]
 
 
 @cache
-def get_prime_factors(x):
+def get_prime_factors(x: int) -> set[int]:
     prime_factors = set()
     while x != 1:
         for p in PRIMES:
@@ -26,7 +23,7 @@ def get_prime_factors(x):
     return prime_factors
 
 
-def main():
+def main() -> int:
     not_primes = [i for i in range(3, 120_000) if not is_prime(i)]
     total = 0
     for c in not_primes:

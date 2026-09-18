@@ -4,12 +4,12 @@ from numba import njit
 
 
 @njit
-def p(x, m):
+def p(x: np.ndarray, m: int) -> np.ndarray:
     return np.prod(np.power(x, (1 + np.arange(m))))
 
 
 @njit
-def main():
+def main() -> int:
     summed = 0
     for m in range(2, 15 + 1):
         lr = 2**-20

@@ -4,7 +4,7 @@ from math import e
 
 from sympy import primefactors
 
-FACTORS = set([2, 5])
+FACTORS = {2, 5}
 N = 10000
 
 
@@ -25,9 +25,7 @@ def m2(n: Fraction) -> Fraction:
 
 
 def is_terminating(m_n: Fraction) -> bool:
-    if len(FACTORS.union(primefactors(m_n.denominator))) == 2:
-        return True
-    return False
+    return len(FACTORS.union(primefactors(m_n.denominator))) == 2  # noqa: PLR2004
 
 
 def d(n: Fraction) -> Fraction:
@@ -36,10 +34,9 @@ def d(n: Fraction) -> Fraction:
     return n
 
 
-def main():
-    assert sum(d(Fraction(n)) for n in range(5, 100 + 1)) == 2438
-    answer = sum(d(Fraction(n)) for n in range(5, N + 1))
-    return answer
+def main() -> int | Fraction:
+    assert sum(d(Fraction(n)) for n in range(5, 100 + 1)) == 2438  # noqa: S101, PLR2004
+    return sum(d(Fraction(n)) for n in range(5, N + 1))
 
 
 if __name__ == "__main__":

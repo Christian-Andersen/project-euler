@@ -1,19 +1,19 @@
 from itertools import combinations
 
 
-def main():
+def main() -> int:
     squares = {"01", "04", "09", "16", "25", "36", "49", "64", "81"}
 
     digits = [str(i) for i in range(10)]
 
     cubes = []
     for comb in combinations(digits, 6):
-        comb = set(comb)
-        if "6" in comb:
-            comb.add("9")
-        elif "9" in comb:
-            comb.add("6")
-        cubes.append(comb)
+        comb_set = set(comb)
+        if "6" in comb_set:
+            comb_set.add("9")
+        elif "9" in comb_set:
+            comb_set.add("6")
+        cubes.append(comb_set)
 
     count = 0
     for i in range(len(cubes)):

@@ -4,7 +4,7 @@ from tqdm import trange
 N = 10**8
 
 
-def main():
+def main() -> int:
     primes = np.ones(int(N / 2), dtype=bool)
     length = len(primes)
     primes[[0, 1]] = False

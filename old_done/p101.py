@@ -2,20 +2,20 @@
 import numpy as np
 
 
-def f(n):
+def f(n: int) -> int:
     return 1 - n + n**2 - n**3 + n**4 - n**5 + n**6 - n**7 + n**8 - n**9 + n**10
 
 
-def main():
+def main() -> int:
     uns = [f(i) for i in range(1, 21)]
     answer = 0
     for i in range(10):
         x = list(range(1, i + 2))
         y = uns[: (i + 1)]
-        assert len(x) == len(y)
+        assert len(x) == len(y)  # noqa: S101
         poly = np.polyfit(x, y, i).round().astype(int)
         pred = [np.polyval(poly, j) for j in range(1, len(x) + 1)]
-        assert pred == y
+        assert pred == y  # noqa: S101
         answer += np.polyval(poly, len(x) + 1)
     return answer
 

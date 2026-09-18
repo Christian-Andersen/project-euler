@@ -2,7 +2,7 @@
 from sympy.ntheory.generate import primerange
 
 
-def main():
+def main() -> int:
     return sum(primerange(2_000_000))
 
 

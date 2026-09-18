@@ -1,14 +1,14 @@
 import json
 from itertools import permutations
+from pathlib import Path
 
-SQUARES = set(i**2 for i in range(10**5))
+SQUARES = {i**2 for i in range(10**5)}
 
 
-def main():
-    with open("0098_words.txt") as f:
+def main() -> list[str] | None:
+    with Path("0098_words.txt").open() as f:
         s = str(f.readlines()).replace("'", "")
         words = json.loads(s)
-    words_set = set(words)
 
     pals = {}
     for word in words:
@@ -20,7 +20,7 @@ def main():
     for key, value in pals.items():
         letters = set(key)
         for i in permutations(range(10), len(letters)):
-            look_up = {k: v for k, v in zip(letters, i)}
+            look_up = dict(zip(letters, i, strict=False))
             is_square = len(value) * [False]
             scores = []
             for idx, word in enumerate(value):
@@ -36,6 +36,7 @@ def main():
             if all(is_square):
                 print(value, scores)
                 return value
+    return None
 
 
 if __name__ == "__main__":

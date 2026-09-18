@@ -2,7 +2,7 @@ from numba import njit
 
 
 @njit
-def main():
+def main() -> int:
     n = 1
     while True:
         n += 1
@@ -12,7 +12,7 @@ def main():
             if (x * n) == (y * (x - n)):
                 solutions += 1
             continue
-        if solutions >= 1000:
+        if solutions >= 1000:  # noqa: PLR2004
             print(n)
             return n
 

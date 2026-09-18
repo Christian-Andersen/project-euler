@@ -2,7 +2,7 @@
 from math import lcm
 
 
-def main():
+def main() -> int:
     return lcm(*range(1, 20 + 1))
 
 

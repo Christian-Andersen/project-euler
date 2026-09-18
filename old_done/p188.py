@@ -2,7 +2,7 @@ from numba import njit
 
 
 @njit
-def solve(a: int):
+def solve(a: int) -> None:
     x = 1
     for b in range(1, 10**6):
         temp_x = 1
@@ -14,7 +14,7 @@ def solve(a: int):
         print(b, x)
 
 
-def main():
+def main() -> None:
     return solve(1777)
 
 

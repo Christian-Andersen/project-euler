@@ -6,7 +6,7 @@ pals = [i for i in tqdm(range(N)) if str(i) == str(i)[::-1]]
 print(f"Found {len(pals)} pals")
 
 
-def is_sum_of_squares(x):
+def is_sum_of_squares(x: int) -> bool:
     for i in range(1, int((x**0.5) / 2)):
         base = i
         summed = base**2
@@ -20,7 +20,7 @@ def is_sum_of_squares(x):
     return False
 
 
-def main():
+def main() -> int:
     print("Iterating Over Pals")
     total = 0
     for i in tqdm(pals):

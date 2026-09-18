@@ -2,7 +2,7 @@ from numba import njit
 
 
 @njit
-def main():
+def main() -> int:
     counter = 0
     size = 0
     while True:
@@ -10,7 +10,7 @@ def main():
         for size_diff in range(2, size, 2):
             hole_size = size - size_diff
             tiles_used = size**2 - hole_size**2
-            if tiles_used <= 1_000_000:
+            if tiles_used <= 1_000_000:  # noqa: PLR2004
                 counter += 1
         if (size % 100_000) == 0:
             print(counter)

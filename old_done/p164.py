@@ -7,7 +7,7 @@ def base_case() -> dict[tuple[int, int, int], int]:
     for i in range(1, 10):
         for j in range(10):
             for k in range(10):
-                if (i + j + k) <= 9:
+                if (i + j + k) <= 9:  # noqa: PLR2004
                     d[(i, j, k)] = 1
     return d
 
@@ -23,19 +23,16 @@ def f(d: dict[tuple[int, int, int], int]) -> dict[tuple[int, int, int], int]:
                 if (key[1] == i) and (key[2] == j):
                     old_sum += value
             for k in range(10):
-                if (i + j + k) <= 9:
+                if (i + j + k) <= 9:  # noqa: PLR2004
                     new_d[(i, j, k)] = old_sum
     return new_d
 
 
 def check_number(t: tuple[int, ...]) -> bool:
-    for i in range(len(t) - 2):
-        if sum(t[i : i + 3]) > 9:
-            return False
-    return True
+    return all(sum(t[i : i + 3]) <= 9 for i in range(len(t) - 2))  # noqa: PLR2004
 
 
-def g(n: int):
+def g(n: int) -> int:
     count = 0
     for t in product(range(10), repeat=n):
         if check_number(t):
@@ -43,7 +40,7 @@ def g(n: int):
     return count
 
 
-def main():
+def main() -> int:
     d = {}
     for i in range(3, 21):
         d = f(d)

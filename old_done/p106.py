@@ -2,7 +2,7 @@
 import numpy as np
 
 
-def get_subsets(n):
+def get_subsets(n: int) -> list[str]:
     subsets = []
     for i in range(3**n):
         s = str(np.base_repr(i, 3)).zfill(4)
@@ -34,7 +34,7 @@ def check_fixed_size(n: int) -> int:
                 idxs_1.append(idx)
             elif i == "2":
                 idxs_2.append(idx)
-        for i, j in zip(idxs_1, idxs_2):
+        for i, j in zip(idxs_1, idxs_2, strict=False):
             if j < i:
                 break
         else:
@@ -43,11 +43,11 @@ def check_fixed_size(n: int) -> int:
     return count
 
 
-assert check_fixed_size(4) == 1
-assert check_fixed_size(7) == 70
+assert check_fixed_size(4) == 1  # noqa: S101
+assert check_fixed_size(7) == 70  # noqa: S101, PLR2004
 
 
-def main():
+def main() -> int:
     return check_fixed_size(12)
 
 

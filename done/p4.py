@@ -1,10 +1,10 @@
 # Largest Palindrome Product
-def is_palindrome(x):
+def is_palindrome(x: int) -> bool:
     str_x = str(x)
     return str_x == str_x[::-1]
 
 
-def main():
+def main() -> int:
     largest_palindrome = 0
     for i in range(999, 99, -1):
         for j in range(999, 99, -1):

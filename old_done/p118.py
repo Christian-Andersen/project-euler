@@ -6,33 +6,30 @@ from itertools import permutations, product
 def is_prime(x: int) -> bool:
     if x <= 1:
         return False
-    for i in range(2, int(x**0.5) + 1):
-        if (x % i) == 0:
-            return False
-    return True
+    return all(x % i != 0 for i in range(2, int(x**0.5) + 1))
 
 
 def get_sets(order: tuple) -> list:
     out = []
     for cut in product(range(2), repeat=8):
-        l = []
+        parts = []
         x = ""
         for i in range(8):
             x += order[i]
             if cut[i]:
-                l.append(int(x))
+                parts.append(int(x))
                 x = ""
         x += order[-1]
-        l.append(int(x))
-        for x in l:
+        parts.append(int(x))
+        for x in parts:
             if not is_prime(x):
                 break
         else:
-            out.append(tuple(sorted(l)))
+            out.append(tuple(sorted(parts)))
     return out
 
 
-def main():
+def main() -> int:
     digits = tuple(str(digit) for digit in range(1, 10))
     orders = permutations(digits)
     with multiprocessing.Pool() as pool:

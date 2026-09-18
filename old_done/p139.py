@@ -5,7 +5,7 @@ from numba import njit
 
 
 @njit
-def main():
+def main() -> int:
     counter = 0
     for m in range(1, 100_000_000):
         for n in range(1, m):
@@ -16,7 +16,7 @@ def main():
             a_prim = m**2 - n**2
             b_prim = 2 * m * n
             c_prim = m**2 + n**2
-            if (a_prim + b_prim + c_prim) >= 100_000_000:
+            if (a_prim + b_prim + c_prim) >= 100_000_000:  # noqa: PLR2004
                 break
             k = 0
             while True:
@@ -24,12 +24,12 @@ def main():
                 a = k * a_prim
                 b = k * b_prim
                 c = k * c_prim
-                if (a + b + c) >= 100_000_000:
+                if (a + b + c) >= 100_000_000:  # noqa: PLR2004
                     break
                 square_area = c**2
                 hole_area = square_area - 2 * a * b
                 hole_side = round(hole_area**0.5)
-                assert (hole_side**2) == hole_area
+                assert (hole_side**2) == hole_area  # noqa: S101
                 if (c % hole_side) == 0:
                     counter += 1
     print(counter)

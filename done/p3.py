@@ -1,23 +1,19 @@
 # Largest Prime Factor
-def is_prime(x):
-    if x < 2:
+def is_prime(x: int) -> bool:
+    if x < 2:  # noqa: PLR2004
         return False
-    for i in range(2, int(x**0.5) + 1):
-        if (x % i) == 0:
-            return False
-    return True
+    return all(x % i != 0 for i in range(2, int(x**0.5) + 1))
 
 
-def get_lowest_factor(x):
+def get_lowest_factor(x: int) -> int:
     p = 2
     while True:
-        if is_prime(p):
-            if (x % p) == 0:
-                return p
+        if is_prime(p) and (x % p) == 0:
+            return p
         p += 1
 
 
-def main():
+def main() -> int:
     n = 600851475143
     prime_factors = []
     while n != 1:

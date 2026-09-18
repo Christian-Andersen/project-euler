@@ -4,7 +4,7 @@ from tqdm import trange
 N = 10**7
 
 
-def main():
+def main() -> int:
     divisor_count = np.zeros(N + 1, dtype=np.uint32)
 
     for i in trange(1, N):

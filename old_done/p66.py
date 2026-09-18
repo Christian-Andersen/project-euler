@@ -3,12 +3,12 @@ from functools import cache
 from math import isclose
 
 decimal.getcontext().prec = 100
-SQUARES = set(i**2 for i in range(100))
+SQUARES = {i**2 for i in range(100)}
 
 
 @cache
-def h(n, a):
-    if n == -2:
+def h(n: int, a: tuple[int, ...]) -> int:
+    if n == -2:  # noqa: PLR2004
         return 0
     if n == -1:
         return 1
@@ -16,15 +16,15 @@ def h(n, a):
 
 
 @cache
-def k(n, a):
-    if n == -2:
+def k(n: int, a: tuple[int, ...]) -> int:
+    if n == -2:  # noqa: PLR2004
         return 1
     if n == -1:
         return 0
     return a[n] * k(n - 1, a) + k(n - 2, a)
 
 
-def get_continued_fraction(r, length):
+def get_continued_fraction(r: decimal.Decimal, length: int) -> list[int]:
     a = []
     for _ in range(length):
         r_floor = int(r)
@@ -36,23 +36,23 @@ def get_continued_fraction(r, length):
     return a
 
 
-def main():
+def main() -> int:
     unsolved = list(range(2, 1_000 + 1))
     largest = 0
     for depth_power in range(1, 6):
-        for D in unsolved.copy():
-            if D in SQUARES:
+        for d in unsolved.copy():
+            if d in SQUARES:
                 continue
-            r = decimal.Decimal(D).sqrt()
+            r = decimal.Decimal(d).sqrt()
             a = tuple(get_continued_fraction(r, 10**depth_power))
             for i in range(len(a)):
                 x = h(i, a)
                 y = k(i, a)
-                if (x**2 - D * (y**2)) == 1:
+                if (x**2 - d * (y**2)) == 1:
                     if x >= largest:
                         largest = x
-                        print(D, x)
-                    unsolved.remove(D)
+                        print(d, x)
+                    unsolved.remove(d)
                     break
     return largest
 

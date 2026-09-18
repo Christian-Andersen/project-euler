@@ -1,17 +1,17 @@
 # Sum Square Difference
-def sum_of_the_squares(n):
+def sum_of_the_squares(n: int) -> int:
     return sum(i**2 for i in range(1, n + 1))
 
 
-def square_of_the_sums(n):
+def square_of_the_sums(n: int) -> int:
     return sum(i for i in range(1, n + 1)) ** 2
 
 
-def difference(n):
+def difference(n: int) -> int:
     return abs(sum_of_the_squares(n) - square_of_the_sums(n))
 
 
-def main():
+def main() -> int:
     return difference(100)
 
 

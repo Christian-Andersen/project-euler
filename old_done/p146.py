@@ -11,10 +11,7 @@ def is_special(x: int) -> bool:
     for i in [1, 3, 7, 9, 13, 27]:
         if not isprime(x_squared + i):
             return False
-    for i in [11, 17, 19, 21, 23]:
-        if isprime(x_squared + i):
-            return False
-    return True
+    return all(not isprime(x_squared + i) for i in [11, 17, 19, 21, 23])
 
 
 def sum_up_to(n: int) -> int:
@@ -26,8 +23,8 @@ def sum_up_to(n: int) -> int:
     return sum(answers)
 
 
-def main():
-    assert sum_up_to(1_000_000) == 1242490
+def main() -> int:
+    assert sum_up_to(1_000_000) == 1242490  # noqa: S101, PLR2004
     return sum_up_to(N)
 
 

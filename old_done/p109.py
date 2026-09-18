@@ -1,4 +1,4 @@
-def main():
+def main() -> int:
     scores = {}
     scores["0"] = 0
     for i in range(1, 21):
@@ -17,7 +17,7 @@ def main():
     counter = 0
     for way in ways:
         score = scores[way[0][0]] + scores[way[0][1]] + scores[way[1]]
-        if score < 100:
+        if score < 100:  # noqa: PLR2004
             counter += 1
     return counter
 
