@@ -1,5 +1,5 @@
-from tqdm import trange, tqdm
 import numpy as np
+from tqdm import tqdm, trange
 
 N = 100_000_000
 

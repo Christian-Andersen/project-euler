@@ -18,3 +18,18 @@ dependencies = [
     "torchvision>=0.19.1",
     "tqdm>=4.67.1",
 ]
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+  "COM812", # missing-trailing-comma
+  "T20",    # flake8-print
+  "ERA",    # eradicate
+  "D",      # docstrings
+  "CPY",    # copyright
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"

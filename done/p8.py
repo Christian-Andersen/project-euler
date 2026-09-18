@@ -31,8 +31,7 @@ def main():
     greatest_product = 0
     for i in range(len(number) - adjacency_length):
         product = prod(number[i : i + adjacency_length])
-        if product > greatest_product:
-            greatest_product = product
+        greatest_product = max(greatest_product, product)
     return greatest_product
 
 

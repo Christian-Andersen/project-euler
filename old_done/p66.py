@@ -1,6 +1,6 @@
 import decimal
-from math import isclose
 from functools import cache
+from math import isclose
 
 decimal.getcontext().prec = 100
 SQUARES = set(i**2 for i in range(100))
@@ -45,7 +45,7 @@ def main():
                 continue
             r = decimal.Decimal(D).sqrt()
             a = tuple(get_continued_fraction(r, 10**depth_power))
-            for i in range(0, len(a)):
+            for i in range(len(a)):
                 x = h(i, a)
                 y = k(i, a)
                 if (x**2 - D * (y**2)) == 1:

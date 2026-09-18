@@ -1,5 +1,5 @@
-from itertools import combinations
 import multiprocessing
+from itertools import combinations
 
 
 def check_set(s: list[int]) -> int:
@@ -17,8 +17,8 @@ def check_set(s: list[int]) -> int:
 
 
 def main():
-    with open("./0105_sets.txt", "r") as f:
-        sets = [[int(i) for i in line.strip().split(",")] for line in f.readlines()]
+    with open("./0105_sets.txt") as f:
+        sets = [[int(i) for i in line.strip().split(",")] for line in f]
     with multiprocessing.Pool() as pool:
         results = pool.map(check_set, sets)
     print(sum(results))

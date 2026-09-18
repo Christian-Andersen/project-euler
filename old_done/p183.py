@@ -1,8 +1,8 @@
 # Maximum Product of Parts
-from sympy import primefactors
 from fractions import Fraction
 from math import e
 
+from sympy import primefactors
 
 FACTORS = set([2, 5])
 N = 10000

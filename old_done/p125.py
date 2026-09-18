@@ -1,6 +1,5 @@
 from tqdm import tqdm
 
-
 N = 10**8
 print("Generating palindromes")
 pals = [i for i in tqdm(range(N)) if str(i) == str(i)[::-1]]

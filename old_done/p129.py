@@ -1,6 +1,6 @@
-from math import gcd
-from itertools import count
 import sys
+from itertools import count
+from math import gcd
 
 sys.set_int_max_str_digits(0)
 

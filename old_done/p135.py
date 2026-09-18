@@ -1,5 +1,6 @@
-import numpy as np
 from itertools import count
+
+import numpy as np
 
 
 def main():

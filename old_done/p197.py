@@ -1,12 +1,10 @@
 # A Recursively Defined Sequence
-from decimal import Decimal
 import math
+from decimal import Decimal
 
 
 def f(x: Decimal) -> Decimal:
-    return math.floor(2 ** (Decimal("30.403243784") - x**2)) * (
-        Decimal(10) ** Decimal(-9)
-    )
+    return math.floor(2 ** (Decimal("30.403243784") - x**2)) * (Decimal(10) ** Decimal(-9))
 
 
 def main():

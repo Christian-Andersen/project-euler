@@ -1,6 +1,7 @@
 from fractions import Fraction
 from itertools import product
 from math import prod
+
 import torch
 
 D = 1_000_000_000

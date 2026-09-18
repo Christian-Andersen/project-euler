@@ -1,5 +1,5 @@
 def expand_increasing(d: dict[int, int]) -> dict[int, int]:
-    out = {k: 0 for k in range(1, 10)}
+    out = dict.fromkeys(range(1, 10), 0)
     for key, value in d.items():
         for i in range(1, key + 1):
             out[i] += value
@@ -7,7 +7,7 @@ def expand_increasing(d: dict[int, int]) -> dict[int, int]:
 
 
 def expand_decreasing(d: dict[int, int]) -> dict[int, int]:
-    out = {k: 1 for k in range(1, 10)}
+    out = dict.fromkeys(range(1, 10), 1)
     for key, value in d.items():
         for i in range(key, 10):
             out[i] += value
@@ -15,8 +15,8 @@ def expand_decreasing(d: dict[int, int]) -> dict[int, int]:
 
 
 def main():
-    x = {k: 1 for k in range(1, 10)}
-    y = {k: 1 for k in range(1, 10)}
+    x = dict.fromkeys(range(1, 10), 1)
+    y = dict.fromkeys(range(1, 10), 1)
     answer = 9
     for _ in range(2, 101):
         x = expand_increasing(x)

@@ -1,12 +1,11 @@
 import json
 from itertools import permutations
 
-
 SQUARES = set(i**2 for i in range(10**5))
 
 
 def main():
-    with open("0098_words.txt", "r") as f:
+    with open("0098_words.txt") as f:
         s = str(f.readlines()).replace("'", "")
         words = json.loads(s)
     words_set = set(words)

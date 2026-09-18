@@ -1,5 +1,5 @@
-from math import gcd, prod
 from functools import cache
+from math import gcd, prod
 
 
 def is_prime(x):
@@ -38,14 +38,7 @@ def main():
                 continue
             if gcd(a, c) != 1:
                 continue
-            if (
-                prod(
-                    get_prime_factors(a)
-                    .union(get_prime_factors(b))
-                    .union(get_prime_factors(c))
-                )
-                < c
-            ):
+            if prod(get_prime_factors(a).union(get_prime_factors(b)).union(get_prime_factors(c))) < c:
                 total += c
                 print(c, total)
     return total

@@ -1,6 +1,6 @@
 # Pandigital Prime Sets
-from itertools import permutations, product
 import multiprocessing
+from itertools import permutations, product
 
 
 def is_prime(x: int) -> bool:

@@ -1,4 +1,5 @@
 from functools import cache
+
 from sympy import sieve
 
 totients = [0] + [i for i in sieve.totientrange(1, 40_000_000)]

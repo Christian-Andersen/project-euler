@@ -21,8 +21,7 @@ def main():
             if (s <= 0).any():
                 break
             product = p(s, m)
-            if product > best:
-                best = product
+            best = max(best, product)
         print(m, int(best))
         summed += int(best)
     print(summed)

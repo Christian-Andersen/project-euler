@@ -1,5 +1,6 @@
 # Arithmetic Expressions
 from itertools import permutations, product
+
 import numpy as np
 
 OPERATIONS = [np.add, np.subtract, np.multiply, np.divide]

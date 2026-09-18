@@ -1,5 +1,6 @@
-import numpy as np
 from copy import deepcopy
+
+import numpy as np
 
 
 def is_path(graph: list[list], node_1: int, node_2: int, visted: set) -> bool:
@@ -60,7 +61,7 @@ def are_edges_connected(edges: dict[tuple[int, int], int], size: int) -> bool:
 
 def main():
     matrix = []
-    with open("0107_network.txt", "r") as file:
+    with open("0107_network.txt") as file:
         for line in file:
             matrix.append([int(i) for i in line.strip().replace("-", "0").split(",")])
 

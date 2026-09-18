@@ -1,4 +1,4 @@
-from math import atan2, pi, isclose
+from math import atan2, isclose, pi
 
 N = 50
 

@@ -10,7 +10,7 @@ def main():
         if LHS == RHS:
             print(blue_discs, total_discs)
             break
-        elif LHS < RHS:
+        if LHS < RHS:
             LHS += 4 * blue_discs
             blue_discs += 1
         else:

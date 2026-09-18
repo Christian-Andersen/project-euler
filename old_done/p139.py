@@ -1,5 +1,6 @@
 # Pythagorean Tiles
 from math import gcd
+
 from numba import njit
 
 

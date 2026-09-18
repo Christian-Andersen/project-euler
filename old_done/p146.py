@@ -1,5 +1,5 @@
 # Investigating a Prime Pattern
-from sympy import sieve, isprime
+from sympy import isprime, sieve
 from tqdm import trange
 
 N = 150_000_000

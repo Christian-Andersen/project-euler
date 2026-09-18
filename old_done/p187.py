@@ -1,5 +1,5 @@
-from tqdm import trange
 import numpy as np
+from tqdm import trange
 
 N = 10**8
 

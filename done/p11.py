@@ -31,24 +31,20 @@ def main():
     for i in range(17):
         for j in range(20):
             prod = array[i : i + 4, j].prod()
-            if prod > greatest_product:
-                greatest_product = prod
+            greatest_product = max(greatest_product, prod)
             prod = array[j, i : i + 4].prod()
-            if prod > greatest_product:
-                greatest_product = prod
+            greatest_product = max(greatest_product, prod)
     for i in range(-20, 20 + 1):
         diagonal = array.diagonal(i)
         for j in range(len(diagonal) - 3):
             prod = diagonal[j : j + 4].prod()
-            if prod > greatest_product:
-                greatest_product = prod
+            greatest_product = max(greatest_product, prod)
     array = np.fliplr(array)
     for i in range(-20, 20 + 1):
         diagonal = array.diagonal(i)
         for j in range(len(diagonal) - 3):
             prod = diagonal[j : j + 4].prod()
-            if prod > greatest_product:
-                greatest_product = prod
+            greatest_product = max(greatest_product, prod)
     return greatest_product
 
 
