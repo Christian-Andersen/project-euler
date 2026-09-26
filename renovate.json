@@ -1,21 +1,29 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
   "nix": {
     "enabled": true
   },
   "lockFileMaintenance": {
-    "enabled": true,
-    "schedule": ["before 5am on the first day of the month"]
+    "enabled": true
   },
   "packageRules": [
     {
-      "description": "Group all Nix flake input updates into a single PR",
+      "description": "Group Nix flake input updates into a single PR",
       "matchManagers": ["nix"],
+      "matchUpdateTypes": ["digest"],
       "groupName": "Nix flake inputs",
       "groupSlug": "nix-flake-inputs"
     },
     {
-      "description": "Pin and track the answers-data URL handled by the custom regex manager",
+      "description": "Group non-major CI action updates in .forgejo/workflows; major bumps get their own PR",
+      "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["digest", "patch", "minor"],
+      "groupName": "CI workflow actions",
+      "groupSlug": "ci-workflow-actions"
+    },
+    {
+      "description": "Pin and track the answers-data ref handled by the custom regex manager",
       "matchManagers": ["custom.regex"],
       "matchFileNames": ["test_done.py"],
       "pinDigests": true
