@@ -1,7 +1,6 @@
 set dotenv-load
 
 alias c := check
-alias r := run
 
 [private]
 default:
@@ -9,9 +8,6 @@ default:
 
 check:
     uv run -- prek run --all-files
-
-run *args:
-    uv run -- main.py {{ args }}
 
 audit:
     uv run -- prek run audit
