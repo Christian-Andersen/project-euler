@@ -45,7 +45,7 @@ def main() -> int:
         for j in range(len(diagonal) - 3):
             prod = diagonal[j : j + 4].prod()
             greatest_product = max(greatest_product, prod)
-    return greatest_product
+    return int(greatest_product)
 
 
 if __name__ == "__main__":

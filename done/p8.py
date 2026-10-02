@@ -29,7 +29,7 @@ def main() -> int:
     adjacency_length = 13
     number = [int(i) for i in S.replace("\n", "")]
     greatest_product = 0
-    for i in range(len(number) - adjacency_length):
+    for i in range(len(number) - adjacency_length + 1):
         product = prod(number[i : i + adjacency_length])
         greatest_product = max(greatest_product, product)
     return greatest_product
